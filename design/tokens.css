@@ -1,0 +1,43 @@
+/* Identidade do projeto: azul-mar, branco e dourado. Modo claro.
+   Fonte única das cores: o React, o Tailwind e o simulador leem destes valores. */
+:root {
+  /* Neutros */
+  --color-bg: #FFFFFF;
+  --color-bg-subtle: #F4F8FB;     /* fundo de página atrás de cartões, campos de formulário */
+  --color-surface: #FFFFFF;
+  --color-line: #DCE7EF;
+  --color-ink: #0A2A40;           /* texto principal (azul-marinho) */
+  --color-muted: #4F6B80;         /* texto secundário (5,6:1 sobre branco) */
+
+  /* Azul-mar: ação, marca, links, foco */
+  --color-primary: #0B5C8E;       /* texto branco sobre ele: 7,2:1 */
+  --color-primary-hover: #094D78;
+  --color-primary-active: #083F63;
+  --color-primary-soft: #E3F0F8;  /* fundos suaves, balão do cliente, selo "IA" */
+  --color-primary-deep: #0A4A73;  /* texto sobre primary-soft */
+  --color-on-primary: #FFFFFF;
+
+  /* Dourado: destaque, atenção, "precisa de você" */
+  --color-gold: #E0B040;          /* só como preenchimento, com texto azul-marinho (7,4:1) */
+  --color-gold-hover: #D1A236;
+  --color-gold-soft: #FBEFCB;
+  --color-gold-deep: #6B4A06;     /* texto sobre gold-soft (7:1) */
+  --color-on-gold: #0A2A40;
+
+  /* Estados */
+  --color-success: #1E7B4F;
+  --color-success-soft: #DDF3E6;
+  --color-success-deep: #14573A;
+  --color-danger: #B3261E;
+  --color-danger-soft: #FBE4E2;
+  --color-focus: #0B5C8E;
+
+  /* Forma e tipografia */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 2px rgba(10, 42, 64, 0.06), 0 4px 12px rgba(10, 42, 64, 0.06);
+  --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --touch-min: 44px;              /* alvo mínimo de toque no mobile */
+}
