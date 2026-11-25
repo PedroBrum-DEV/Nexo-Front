@@ -81,6 +81,16 @@ export default function Home() {
 
       {!onboardingDismissed && <Reveal i={0}><Onboarding /></Reveal>}
 
+      {live && (
+        <Reveal i={1}>
+          <Card style={{ gap: 12 }}>
+            <SectionTitle>Radar de empresas</SectionTitle>
+            <T c="muted">Encontre empresas que precisam de site ou de agendamento online e acompanhe as negociações.</T>
+            <Button label="Abrir o Radar" icon="target" variant="secondary" small full={false} onPress={() => router.push('/radar')} />
+          </Card>
+        </Reveal>
+      )}
+
       {!sample && (
         <Reveal i={1}>
           <Card style={{ gap: 12 }}>

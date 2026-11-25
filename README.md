@@ -25,7 +25,7 @@ Outros comandos: `npm run typecheck`, `npm run export:web` (versão web para tes
 ```
 src/app/                 rotas (Expo Router)
   (auth)/login, cadastro
-  (app)/(tabs)/          Home (Resumo), Registros, Agentes, Conta
+  (app)/(tabs)/          Home (Resumo), Registros, Agentes, Conta, Radar
   (app)/agente/novo      criar agente (3 etapas)
   (app)/agente/[id]      conversas e configurações   .../conversa/[cid]
   (app)/detalhes         serviços, horários, 8 semanas
@@ -43,6 +43,18 @@ src/lib/                 theme (tokens), validators (CPF/CNPJ/idade/senha), auth
 - **Privacidade e dados** (Conta): baixar meus dados (JSON, sem senhas) e excluir a conta (pede senha e a palavra EXCLUIR).
 - **Sessões ativas** (Conta): aparelhos conectados, encerrar um, sair dos outros ou de todos. Com a API, quem registra e derruba é o servidor (o token do aparelho encerrado para de valer na hora).
 - O espaço de trabalho de cada conta (agentes, registros, histórico, progresso) fica guardado no aparelho (`src/lib/store.tsx`). Com a API, os agentes vêm do servidor.
+
+## Radar de empresas
+
+Tela **Radar** (`src/app/(app)/(tabs)/radar.tsx`, só com a API ligada): informe a **localização**, marque o **tipo de problema** que os seus serviços resolvem (não tem site, agenda só pelo WhatsApp, site desatualizado) e toque em **Pesquisar**. O servidor (`nexo-back`, rotas `/api/radar*`) procura as empresas, descobre a necessidade real de cada uma e a tela mostra:
+
+- cada empresa com a **necessidade**, o que oferecer, os contatos achados, a nota e o motivo (em **Detalhes**: sinais do site, logotipo, fotos e a primeira mensagem);
+- **Automático:** busca sozinha a cada 4 horas (até 10 empresas por busca) e faz o primeiro contato sozinho, em dia útil, das 9h às 18h, com intervalo entre envios. Configure a oferta e o que a IA pode afirmar (prazo, suporte);
+- **Negociações:** quem está em atendimento, quem espera a vez e quem foi pausado (10 minutos sem responder); a IA retoma as pausadas depois, com o contexto;
+- **Esboço personalizado:** gera uma prévia da página de agendamento ou do site da empresa (link `/demo/...` no servidor) para você abrir ou copiar;
+- ações por empresa: contatar agora (WhatsApp ou e-mail), gerar esboço e descartar.
+
+A tela atualiza a cada 5 s enquanto está aberta. Aviso fixo: o WhatsApp do servidor é uma integração **não oficial**, que o WhatsApp pode restringir; para evitar, use "Só e-mail" no primeiro contato. No celular o Radar não entra na barra inferior (já tem 6 abas): abre pelo cartão da Home, pelo menu lateral (computador) ou pela busca (`Ctrl+K`, atalho `g` e depois `e`). Sem `EXPO_PUBLIC_API_URL` a tela só explica o que faz. A lógica pura (filtros, "responde em…", validação) está em `src/lib/radar.ts`, com testes em `src/lib/__tests__/radar.test.ts`.
 
 ## Recuperar senha, tema escuro e confirmação da foto
 

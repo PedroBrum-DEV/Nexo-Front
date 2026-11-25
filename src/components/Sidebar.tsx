@@ -20,6 +20,7 @@ const ITEMS: { label: string; path: string; icon: IconName; match: (p: string) =
   { label: 'Avisos', path: '/avisos', icon: 'bell', match: (p) => p.startsWith('/avisos') },
   { label: 'Registros', path: '/registros', icon: 'list', match: (p) => p.startsWith('/registros') },
   { label: 'Agentes', path: '/agentes', icon: 'cpu', match: (p) => p.startsWith('/agente') },
+  { label: 'Radar', path: '/radar', icon: 'target', match: (p) => p.startsWith('/radar') },
   { label: 'Relatórios', path: '/relatorios', icon: 'bar-chart-2', match: (p) => p.startsWith('/relatorios') },
   { label: 'Conta', path: '/conta', icon: 'user', match: (p) => p.startsWith('/conta') || p.startsWith('/privacidade') || p.startsWith('/sessoes') },
 ];
