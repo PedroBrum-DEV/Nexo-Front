@@ -35,6 +35,8 @@ export default function TabsLayout() {
       <Tabs.Screen name="agenda" options={{ title: 'Agenda', tabBarIcon: icon('calendar') }} />
       <Tabs.Screen name="registros" options={{ title: 'Registros', tabBarIcon: icon('list'), tabBarBadge: open > 0 ? open : undefined, tabBarBadgeStyle: { backgroundColor: color.gold, color: color.ink, fontWeight: '700' } }} />
       <Tabs.Screen name="agentes" options={{ title: 'Agentes', tabBarIcon: icon('cpu') }} />
+      {/* O Radar existe como rota, mas fica fora da barra inferior (6 abas já enchem a tela do celular): abre pela Home, pelo menu lateral e pela busca. */}
+      <Tabs.Screen name="radar" options={{ title: 'Radar', href: null }} />
       <Tabs.Screen name="relatorios" options={{ title: 'Relatórios', tabBarIcon: icon('bar-chart-2') }} />
       <Tabs.Screen name="conta" options={{ title: 'Conta', tabBarIcon: icon('user') }} />
     </Tabs>

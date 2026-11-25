@@ -3,6 +3,7 @@ export const BASE: string = process.env.EXPO_PUBLIC_API_URL || '';
 export const live = Boolean(BASE);
 
 import { setOffline } from './net';
+import type { Channel, RadarOverview } from './radar';
 
 let sessionToken = '';
 let onUnauthorized: () => void = () => {};
@@ -67,6 +68,12 @@ export const remote = {
   appointments: (query = '') => call<{ items: any[]; total: number; withoutLink: number }>('GET', `/api/appointments${query}`),
   registerPush: (token: string) => call('POST', '/api/me/push-token', { token }),
   usage: () => call<any>('GET', '/api/usage'),
+  radar: () => call<RadarOverview>('GET', '/api/radar'),
+  radarConfig: (b: unknown) => call('PUT', '/api/radar/config', b),
+  radarSearch: (b: unknown) => call('POST', '/api/radar/search', b),
+  radarContact: (id: string, channel: Channel) => call('POST', `/api/radar/companies/${id}/contact`, { channel }),
+  radarPreview: (id: string) => call<{ url: string }>('POST', `/api/radar/companies/${id}/preview`),
+  radarSkip: (id: string) => call('POST', `/api/radar/companies/${id}/skip`),
   list: () => call('GET', '/api/agents'),
   create: (b: unknown) => call('POST', '/api/agents', b),
   update: (id: string, b: unknown) => call('PUT', `/api/agents/${id}`, b),

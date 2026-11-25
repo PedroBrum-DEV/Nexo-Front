@@ -38,6 +38,7 @@ export function PaletteProvider({ children }: { children: ReactNode }) {
       { id: 'p-avisos', group: 'Ir para', label: 'Avisos', hint: 'Central de notificações', icon: 'bell', run: go('/avisos'), keys: 'notificacoes alertas' },
       { id: 'p-reg', group: 'Ir para', label: 'Registros', hint: 'O que precisa de decisão', icon: 'list', run: go('/registros'), keys: 'decidir pendencias' },
       { id: 'p-ag', group: 'Ir para', label: 'Agentes', icon: 'cpu', run: go('/agentes') },
+      { id: 'p-radar', group: 'Ir para', label: 'Radar', hint: 'Empresas que precisam de site ou agendamento online', icon: 'target', run: go('/radar'), keys: 'empresas prospeccao clientes pesquisar site agendamento negociacoes' },
       { id: 'p-rel', group: 'Ir para', label: 'Relatórios', hint: 'Exportar CSV e PDF', icon: 'bar-chart-2', run: go('/relatorios'), keys: 'exportar csv pdf numeros' },
       { id: 'p-conta', group: 'Ir para', label: 'Conta', hint: 'Foto, senha e aparência', icon: 'user', run: go('/conta'), keys: 'perfil senha foto avatar tema' },
       { id: 'p-priv', group: 'Ir para', label: 'Privacidade e dados', hint: 'Baixar meus dados, excluir conta', icon: 'shield', run: go('/privacidade'), keys: 'lgpd exportar excluir apagar' },
@@ -69,7 +70,7 @@ export function PaletteProvider({ children }: { children: ReactNode }) {
       if (k === '/') { e.preventDefault(); setOpen(true); return; }
       if (Date.now() - chord.current < 1200) {
         chord.current = 0;
-        const map: Record<string, string> = { h: '/', g: '/agenda', v: '/avisos', r: '/registros', a: '/agentes', l: '/relatorios', c: '/conta', p: '/privacidade', s: '/sessoes' };
+        const map: Record<string, string> = { h: '/', g: '/agenda', v: '/avisos', r: '/registros', a: '/agentes', e: '/radar', l: '/relatorios', c: '/conta', p: '/privacidade', s: '/sessoes' };
         if (map[k]) { e.preventDefault(); router.navigate(map[k] as never); }
         return;
       }
@@ -153,7 +154,7 @@ function Palette({ items, onClose }: { items: Item[]; onClose: () => void }) {
             })}
           </ScrollView>
           {wide && <View style={{ flexDirection: 'row', gap: 16, paddingHorizontal: 18, paddingVertical: 10, borderTopWidth: 1, borderTopColor: color.line, backgroundColor: color.subtle, flexWrap: 'wrap' }}>
-            <T v="caption" c="muted">↑↓ navegar</T><T v="caption" c="muted">Enter abrir</T><T v="caption" c="muted">Esc fechar</T><T v="caption" c="muted">g + h/g/v/r/a/l/c: ir para · n: novo agente · t: tema</T>
+            <T v="caption" c="muted">↑↓ navegar</T><T v="caption" c="muted">Enter abrir</T><T v="caption" c="muted">Esc fechar</T><T v="caption" c="muted">g + h/g/v/r/a/e/l/c: ir para · n: novo agente · t: tema</T>
           </View>}
         </Animated.View>
       </View>
